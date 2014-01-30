@@ -1,0 +1,5 @@
+---
+- hosts: localhost
+  tasks:
+    - name: ensure latest apache
+      apt: pkg=apache2 state=latest
