@@ -11,7 +11,7 @@
         filesystem: fstype=btrfs dev={{ ceph_device }}
 
       - name: check osd dir exists
-        file: path=/var/lib/ceph/osd state=directory owner=root group=root recursive=true mode=700
+        file: path=/var/lib/ceph/osd state=directory owner=root group=root recurse=true mode=700
 
       - name: mount osd dir
         mount: name=/var/lib/ceph/osd src={{ ceph_device }} fstype=btrfs opts="subvol={{ ceph_subvolume }}" state=mounted
