@@ -8,7 +8,7 @@
         apt: pkg="btrfs-tools" update_cache="yes" cache_valid_time="3600"
 
       - name: check device is btrfs
-        filesystem: dev=btrfs dev={{ ceph_device }}
+        filesystem: fstype=btrfs dev={{ ceph_device }}
 
       - name: check osd dir exists
         file: path=/var/lib/ceph/osd state=directory owner=root group=root recursive=true mode=700
