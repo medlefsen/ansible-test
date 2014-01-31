@@ -4,6 +4,9 @@
       - name: determine ceph_subvolume
         set_fact: ceph_subvolume={{ ceph_subvolume | default("/") }}
 
+      - name: verify have btrfs tools
+        apt: pkg="btrfs-tools" update_cache="yes" cache_valid_time="3600"
+
       - name: check device is btrfs
         filesystem: dev=btrfs dev={{ ceph_device }}
 
