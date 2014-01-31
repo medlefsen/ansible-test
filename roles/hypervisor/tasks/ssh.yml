@@ -1,7 +1,4 @@
 ---
- - name: ensure system user
-   user: name=system comment="System" group="system"
-
  - name: disable ssh password authentication
    lineinfile: dest=/etc/ssh/sshd_config regexp="^\s*PasswordAuthentication\s*" line="PasswordAuthentication no"
    notify:
@@ -21,9 +18,6 @@
    lineinfile: dest=/etc/ssh/sshd_config regexp="^\s*AllowUsers\s*" line="AllowUsers system"
    notify:
      - reload sshd
-
- - name: only give system user sudo
-   copy: src="sudoers" dest="/etc/sudoers" backup="yes" owner="root" group="root" mode="0600"
 
  - name: ensure system user has .ssh folder
    file: owner="system" group="system" path="/home/system/.ssh" state="directory" mode="0700"

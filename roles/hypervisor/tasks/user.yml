@@ -1,0 +1,6 @@
+---
+ - name: ensure system user
+   user: name=system comment="System" group="system"
+
+ - name: only give system user sudo
+   copy: src="sudoers" dest="/etc/sudoers" backup="yes" owner="root" group="root" mode="0600"
