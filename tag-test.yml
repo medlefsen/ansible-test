@@ -1,0 +1,9 @@
+---
+- hosts: all
+  tasks:
+    - command: echo "one"
+      tags:
+        - one
+    - command: echo "two"
+      tags:
+        - two
