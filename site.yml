@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
-  tasks:
-    - name: ensure latest apache
-      apt: pkg=apache2 state=latest
+- hosts: cleopatra
+  sudo: true
+  roles: 
+    - hypervisor
