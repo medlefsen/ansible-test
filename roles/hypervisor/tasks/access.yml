@@ -1,0 +1,32 @@
+---
+ - name: ensure system user
+   user: name=system comment="System" group="system"
+
+ - name: disable ssh password authentication
+   lineinfile: dest=/etc/ssh/sshd_config regexp="^\s*PasswordAuthentication\s*" line="PasswordAuthentication no"
+   notify:
+     - reload sshd
+
+ - name: disable ssh challenge response authentication
+   lineinfile: dest=/etc/ssh/sshd_config regexp="^\s*ChallengeResponseAuthentication\s*" line="ChallengeResponseAuthentication no"
+   notify:
+     - reload sshd
+
+ - name: remove ssh allowed groups
+   lineinfile: dest=/etc/ssh/sshd_config regexp="^\s*AllowGroups\s*" state=absent
+   notify:
+     - reload sshd
+
+ - name: only allow system user ssh
+   lineinfile: dest=/etc/ssh/sshd_config regexp="^\s*AllowUsers\s*" line="AllowUsers system"
+   notify:
+     - reload sshd
+
+ - name: only give system user sudo
+   copy: src="sudoers" dest="/etc/sudoers" backup="yes" owner="root" group="root" mode="0600"
+
+ - name: ensure system user has .ssh folder
+   file: owner="system" group="system" path="/home/system/.ssh" state="directory" mode="0700"
+
+ - name: install system user authorized_keys
+   copy: src="authorized_keys" dest="/home/system/.ssh/authorized_keys" mode="0600" owner="system" group="system"
