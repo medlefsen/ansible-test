@@ -1,0 +1,4 @@
+---
+- name: copy updater script
+  copy: src=update.sh dest=/root/update.sh mode=0700 owner=root group=root
+
