@@ -1,6 +1,16 @@
 ---
+- hosts: all
+  tasks:
+    - group_by: "{{item}}"
+      with_lines:
+        - cat /etc/ansible/groups
+
 - hosts: cleopatra
   sudo: true
   roles: 
     - hypervisor
     - docker-host
+
+- hosts: docker-base
+  roles: 
+    - self-updater
