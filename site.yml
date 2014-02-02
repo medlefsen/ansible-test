@@ -15,4 +15,5 @@
 
 - hosts: docker-base
   roles: 
+    - docker-base
     - self-updater

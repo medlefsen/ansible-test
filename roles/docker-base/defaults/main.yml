@@ -1,0 +1,3 @@
+---
+supervisor_repo: https://github.com/medlefsen/supervisor.git
+supervisor_version: master
