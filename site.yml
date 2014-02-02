@@ -1,7 +1,7 @@
 ---
 - hosts: all
   tasks:
-    - group_by: "{{item}}"
+    - group_by: key={{item}}
       with_lines:
         - cat /etc/ansible/groups
     - group_by: key=runtime
