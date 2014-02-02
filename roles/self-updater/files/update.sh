@@ -33,4 +33,4 @@ then
   flags=(--skip-tags=runtime)
 fi
 
-ansible-playbook "${flags[@]}" /root/ansible/
+ansible-playbook "${flags[@]}" /root/ansible/site.yml
