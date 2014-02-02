@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ "$#" -eq 0 ]
+if [[ "$#" -ne 1 || ( "$1" != build && "$1" != runtime ) ]]
 then
   echo 1>&2 "Usage: $0 build"
   echo 1>&2 "       $0 runtime"
@@ -30,7 +30,7 @@ fi
 flags=()
 if [ "$1" = build ]
 then
-  flags=(--tags=build)
+  flags=(--skip-tags=runtime)
 fi
 
 ansible-playbook "${flags[@]}" /root/ansible/

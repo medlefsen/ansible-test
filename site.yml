@@ -4,6 +4,8 @@
     - group_by: "{{item}}"
       with_lines:
         - cat /etc/ansible/groups
+    - group_by: key=runtime
+      tags: [ runtime ]
 
 - hosts: cleopatra
   sudo: true
