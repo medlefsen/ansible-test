@@ -12,7 +12,7 @@
   copy: src=supervisord.conf dest=/etc/supervisord.conf mode=0600 owner=root group=root
 
 - name: create supervisord.d directory
-  file: state=directory mode=0700 owner=root group=root
+  file: path=/etc/supervisord.d state=directory mode=0700 owner=root group=root
 
 - name: create run command
   copy: src=run.sh dest=/root/run.sh mode=0700 owner=root group=root
