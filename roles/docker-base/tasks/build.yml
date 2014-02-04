@@ -6,7 +6,7 @@
   apt: pkg=python-setuptools-git update_cache=yes cache_valid_time=3600
 
 - name: install supervisor
-  command: /usr/bin/python2  /root/supervisor/setup.py install creates=/usr/local/bin/supervisord 
+  command: /usr/bin/python2 setup.py install chdir=/root/supervisor creates=/usr/local/bin/supervisord 
 
 - name: install supervisord conf
   copy: src=supervisord.conf dest=/etc/supervisord.conf mode=0600 owner=root group=root
