@@ -17,3 +17,7 @@
   roles: 
     - docker-base
     - self-updater
+
+- hosts: ceph-osd
+  roles:
+    - ceph

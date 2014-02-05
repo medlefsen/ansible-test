@@ -1,0 +1,18 @@
+---
+- name: add ceph repo key
+  apt_key: url="https://ceph.com/git/?p=ceph.git;a=blob_plain;f=keys/release.asc"
+
+- name: add pycurl
+  apt: pkg="python-pycurl" update_cache=yes cache_valid_time=3600
+
+- name: add ceph repo
+  apt_repository: repo="deb http://ceph.com/debian-{{ ceph_release }} precise main" update_cache=no
+
+- name: add ceph extras repo
+  apt_repository: repo="deb http://ceph.com/packages/ceph-extras/debian precise main" update_cache=no
+
+- name: add ceph package
+  apt: pkg="ceph" update_cache=yes cache_valid_time=3600
+
+- name: add ceph-extras package
+  apt: pkg="ceph-extras" update_cache=yes cache_valid_time=3600
