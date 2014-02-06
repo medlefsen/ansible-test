@@ -13,6 +13,3 @@
 
 - name: add ceph package
   apt: pkg="ceph" update_cache=yes cache_valid_time=3600
-
-- name: add ceph-extras package
-  apt: pkg="ceph-extras" update_cache=yes cache_valid_time=3600
